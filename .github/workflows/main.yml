@@ -5,7 +5,7 @@ name: Go
 
 on:
   schedule:
-    - cron: "* * * * *"
+    - cron: "1 * * * *"
     
   push:
     branches: [ "main" ]
