@@ -4,8 +4,6 @@
 name: Go
 
 on: 
-  schedule:
-    - cron: '1 * * * *'
   push:
     branches: [ "main" ]
   pull_request:
