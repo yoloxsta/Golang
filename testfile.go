@@ -7,12 +7,8 @@ import (
 func main() {
 	fmt.Println("Starting application...")
 
-	// Intentional compilation error: undeclared variable
-	result := addNumbers(5, 10)
-	fmt.Println("Result:", result)
-}
+	// Intentional security issue: hardcoded API key
+	apiKey := "AIzaSyD4u2f-SecretKeyThatShouldNotBeInCode"
 
-// Function is missing
-// func addNumbers(a int, b int) int {
-//     return a + b
-// }
+	fmt.Println("Using API Key:", apiKey)
+}
