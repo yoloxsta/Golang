@@ -18,7 +18,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Run TruffleHog
-      uses: trufflesecurity/trufflehog-actions-scan@v1
+      uses: trufflesecurity/trufflehog@main
       with:
         repo_token: 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
         include_github_actions_secrets: true
