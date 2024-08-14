@@ -24,5 +24,5 @@ jobs:
         pip install truffleHog
       
     - name: Secret Scanning
-      run: trufflehog https://github.com/yoloxsta/Golang
+      run: trufflehog git https://github.com/yoloxsta/Golang --only-verified --json
     
