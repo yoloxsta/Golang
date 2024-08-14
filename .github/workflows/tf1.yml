@@ -9,26 +9,14 @@ on:
       - main
 
 jobs:
-  trufflehog:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Go
-        uses: actions/setup-go@v3
-        with:
-          go-version: '1.22'
-          
-      - name: Install TruffleHog
-        run: pip install truffleHog
-
-      - name: Run TruffleHog Scan
-        run: trufflehog git . > trufflehog_results.json
-
-      - name: Upload TruffleHog results
-        uses: actions/upload-artifact@v3
-        with:
-          name: trufflehog-results
-          path: trufflehog_results.json
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Secret Scanning
+      uses: trufflesecurity/trufflehog@main
+      with:
+        extra_args: --only-verified
