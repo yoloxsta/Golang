@@ -20,5 +20,4 @@ jobs:
       uses: trufflesecurity/trufflehog@main
       with:
         extra_args: --only-verified
-    - name: Install TruffleHog
-      run: trufflehog --version
+    

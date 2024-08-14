@@ -22,5 +22,4 @@ jobs:
       with:
         repo_token: ${{ secrets.STA_TOKEN }}
         include_github_actions_secrets: true
-    - name: Install TruffleHog
-      run: trufflehog --version
+
