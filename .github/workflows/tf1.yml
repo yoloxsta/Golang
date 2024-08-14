@@ -24,5 +24,5 @@ jobs:
         pip install truffleHog
       
     - name: Secret Scanning
-      run: rufflehog filesystem --directory .
+      run: trufflehog filesystem --directory . --json --entropy=True
     
