@@ -9,14 +9,30 @@ on:
       - main
 
 jobs:
-  test:
+  trufflehog-scan:
     runs-on: ubuntu-latest
+
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
       with:
-        fetch-depth: 0
-    - name: Secret Scanning
-      uses: trufflesecurity/trufflehog@main
+        python-version: '3.12'
+    
+    - name: Install TruffleHog
+      run: |
+        python -m pip install --upgrade pip
+        pip install truffleHog
+
+    - name: Run TruffleHog scan
+      run: |
+        trufflehog --json --entropy=True . > trufflehog-results.json
+
+    - name: Upload TruffleHog results
+      if: always()
+      uses: actions/upload-artifact@v4
       with:
-        extra_args: --only-verified
+        name: trufflehog-results
+        path: trufflehog-results.json
