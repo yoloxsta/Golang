@@ -1,12 +1,24 @@
 package main
 
 import (
-    "fmt"
+	"fmt"
+	"net/http"
 )
 
+// handler for serving the HTML page
+func servePage(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "index.html")
+}
+
+// handler for serving the "Hello World" message
+func sayHello(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "Hello World")
+}
+
 func main() {
-    // Deliberate fake API key to test TruffleHog detection
-    apiKey := "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
-    fmt.Println("Hello, World!")
-    fmt.Println("API Key:", apiKey)
+	http.HandleFunc("/", servePage)
+	http.HandleFunc("/hello", sayHello)
+
+	fmt.Println("Server is running on http://localhost:80")
+	http.ListenAndServe(":80", nil)
 }
