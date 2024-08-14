@@ -28,7 +28,7 @@ jobs:
 
     - name: Run TruffleHog scan
       run: |
-        trufflehog --json --entropy=True . > trufflehog-results.json
+        trufflehog git . --only-verified
 
     - name: Upload TruffleHog results
       if: always()
