@@ -32,7 +32,7 @@ jobs:
 
     - name: Run TruffleHog scan
       run: |
-        trufflehog git https://github.com/yoloxsta/Golang --only-verified
+        trufflehog --git https://github.com/yoloxsta/Golang --only-verified
 
     - name: Upload TruffleHog results
       if: always()
