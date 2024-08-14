@@ -20,5 +20,5 @@ jobs:
     - name: Run TruffleHog
       uses: trufflesecurity/trufflehog@main
       with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        repo_token: ${{ secrets.STA_TOKEN }}
         include_github_actions_secrets: true
